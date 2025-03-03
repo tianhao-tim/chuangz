@@ -1,0 +1,14 @@
+{
+  "series": [
+    {
+      "name": "手机品牌",
+      "data": [
+        { "value": 1048, "name": "苹果" },
+        { "value": 735, "name": "三星" },
+        { "value": 580, "name": "小米" },
+        { "value": 484, "name": "oppo" },
+        { "value": 300, "name": "vivo" }
+      ]
+    }
+  ]
+}

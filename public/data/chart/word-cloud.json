@@ -1,0 +1,29 @@
+{
+	"data": [
+		{
+			"name": "Tduck",
+			"value": 1,
+			"type": 0
+		},
+		{
+			"name": "Report System",
+			"value": 1,
+			"type": 0
+		},
+		{
+			"name": "Line Chart",
+			"value": 1,
+			"type": 0
+		},
+		{
+			"name": "Bar Chart",
+			"value": 1,
+			"type": 0
+		},
+		{
+			"name": "Pie Chart",
+			"value": 1,
+			"type": 0
+		}
+	]
+}

@@ -1,0 +1,3 @@
+@function com-cdn($asset, $cdn-url: $cdn) {
+	@return #{$cdn-url}/#{$asset};
+}

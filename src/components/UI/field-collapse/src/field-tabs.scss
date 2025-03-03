@@ -1,0 +1,114 @@
+.g-field-tabs {
+	&.el-tabs--border-card {
+		background: var(--el-bg-color-page);
+		border: none;
+		border-bottom: var(--el-border);
+		box-shadow: unset;
+
+		.el-tabs__header {
+			background-color: var(--el-bg-color-page);
+			border-bottom: var(--el-border);
+
+			.el-tabs__nav-next,
+			.el-tabs__nav-prev {
+				line-height: 36px;
+				padding: 0 4px;
+				color: var(--el-text-color-primary);
+
+				.el-icon-arrow-left,
+				.el-icon-arrow-right {
+					font-size: 12px;
+				}
+
+				&:hover {
+					color: var(--el-color-primary);
+					background: transparent;
+				}
+			}
+
+			.el-tabs__item {
+				font-size: 12px;
+				height: 36px;
+				line-height: 36px;
+				padding: 0 15px;
+				margin-top: 0;
+				user-select: none;
+				color: var(--el-text-color-primary);
+
+				&::before {
+					content: "";
+					position: absolute;
+					display: inline-block;
+					bottom: 4px;
+					height: 4px;
+					width: 4px;
+					border-radius: 1px;
+					left: calc(50% - 4px);
+					transition: all 0.2s;
+					opacity: 0;
+				}
+
+				&.is-active {
+					background-color: transparent;
+					border-color: transparent;
+
+					&::before {
+						opacity: 1;
+					}
+				}
+
+				&:hover {
+				}
+			}
+		}
+
+		.el-tabs__content {
+			padding: 0;
+		}
+	}
+
+	&.--column {
+		.g-field-tabs-column-item {
+			border-bottom: var(--el-border);
+		}
+
+		.g-field-tabs-column-item-head {
+			font-size: var(--el-font-size-base);
+			color: var(--el-text-color-primary);
+			padding-left: 8px;
+			line-height: 16px;
+			cursor: pointer;
+			padding-top: 16px;
+			margin: 0;
+			margin-left: 20px;
+			position: relative;
+			display: inline-block;
+
+			&::before {
+				content: "";
+				position: absolute;
+				display: inline-block;
+				bottom: 8px;
+				left: -4px;
+				height: 4px;
+				width: 4px;
+				border-radius: 1px;
+				background: var(--el-color-primary);
+				transition: all 0.2s;
+				opacity: 0;
+			}
+
+			&.--selected {
+				color: var(--el-color-primary);
+
+				&::before {
+					opacity: 1;
+				}
+			}
+
+			&:hover {
+				color: var(--el-color-primary);
+			}
+		}
+	}
+}

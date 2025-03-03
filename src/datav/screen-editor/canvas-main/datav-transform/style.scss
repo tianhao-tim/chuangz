@@ -1,0 +1,173 @@
+.transform-handler {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: move;
+	box-sizing: border-box;
+
+	.transform-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		cursor: move;
+		background: rgba(0, 231, 255, 0.11);
+	}
+
+	&.hided {
+		.transform-bg,
+		i[class$="-handler"] {
+			display: none;
+		}
+	}
+}
+
+.rotate-handler {
+	z-index: 2;
+	cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABvUExURUdwTP///9XV1R0dHf///3Nzc////////////////1ZWVq+vr/T09PX19QQEBP///////8XFxf///////////wYGBv///+jo6P///4aGhqioqMzMzP///2BgYP///////////zExMf///wAAAP///xLps0AAAAAjdFJOUwCxxOdixRDmzSDMv8/Z+tz5wWpXWPk3zALCv8KnyXZVMNuNPnv3CwAAAJ1JREFUKM/NkckOwyAMRFkDBMhC9qWr+//fWCIV1WlzrjoXS36yxmMT8hdqqKoUvRAjMtw22kvecem1GjTuK1vApmI+wQMBbQFy5li+QQRaX4AtRX+vbntAJeRl9HTTx4TiwESs61DXNUPmVQeujzVrQwh43TTxpeRBslVfMUhbiXKWyiAwvnIsMcdyJkfJYdpNvG/ltDm+bjP+8KFP8ggL+zQLGxwAAAAASUVORK5CYII=") 14 14, pointer;
+}
+
+.control-point {
+	z-index: 2;
+	display: flex;
+	width: 20px;
+	height: 20px;
+	justify-content: center;
+	align-items: center;
+
+	&::after {
+		width: 6px;
+		height: 6px;
+		background: #fff;
+		border-radius: 100%;
+		content: "";
+	}
+}
+
+@each $placement in ("top", "bottom", "left", "right") {
+	.#{$placement}-handler {
+		position: absolute;
+		#{$placement}: -5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@if ($placement == "top" or $placement == "bottom") {
+			width: 100%;
+			height: 11px;
+		} @else {
+			top: 0;
+			width: 11px;
+			height: 100%;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			background: var(--el-color-primary);
+
+			@if ($placement == "top" or $placement == "bottom") {
+				width: 100%;
+				height: 1px;
+			} @else {
+				width: 1px;
+				height: 100%;
+			}
+		}
+	}
+}
+
+@each $item in ("top-left", "top-right", "bottom-left", "bottom-right") {
+	$index: str-index($item, "-");
+	$placement: str-slice($item, 1, $index - 1);
+	$adjacency: str-slice($item, $index + 1);
+
+	.#{$placement}-#{$adjacency}-handler {
+		position: absolute;
+		display: flex;
+		#{$placement}: -15px;
+		#{$adjacency}: -15px;
+		width: 11px;
+		height: 11px;
+		justify-content: center;
+		align-items: center;
+
+		.rotate-handler {
+			padding-#{$placement}: 21px;
+			padding-#{$adjacency}: 21px;
+		}
+	}
+}
+
+.datav-scale {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-origin: 0 0;
+
+	.datav-com {
+		width: 100%;
+		height: 100%;
+		outline: 0;
+		box-sizing: border-box;
+		transform-origin: 50% 50%;
+		transform: scaleX(1) scaleY(1);
+
+		.datav-wrapper-event-disable {
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	&.hovered {
+		.datav-com {
+			background: rgba(36, 63, 162, 0.03);
+		}
+
+		.bottom-handler,
+		.left-handler,
+		.right-handler,
+		.top-handler {
+			display: flex !important;
+		}
+	}
+}
+
+.datav-transform {
+	position: absolute;
+	will-change: transform;
+
+	&.selected {
+		z-index: 1;
+
+		.datav-com {
+			background: rgba(36, 63, 162, 0.03);
+		}
+
+		.datav-scale::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			border: var(--el-border);
+		}
+	}
+
+	&.hided,
+	&.locked {
+		pointer-events: none;
+	}
+}
+
+// stylelint-disable-next-line selector-pseudo-element-no-unknown
+.datav-com ::v-deep(.datav-wrapper) {
+	pointer-events: none !important;
+}

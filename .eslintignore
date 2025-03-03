@@ -1,0 +1,11 @@
+node_modules
+*.md
+.vscode
+.idea
+dist
+/public
+.husky
+.local
+.eslintrc.cjs
+.prettierrc.cjs
+.gitignore

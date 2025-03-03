@@ -1,0 +1,121 @@
+<template>
+	<div class="app-container">
+		<el-row :gutter="20">
+			<el-col :span="6" :xs="24">
+				<el-card class="box-card">
+					<template #header>
+						<span>个人信息</span>
+					</template>
+					<div>
+						<div class="text-center">
+							<userAvatar :user="user" @uploadSuccess="handleUploadSuccess" />
+						</div>
+						<ul class="list-group list-group-striped">
+							<li class="list-group-item">
+								<i class="iconfont icon-gerenzhongxin" />
+								用户名称
+								<div class="pull-right">
+									{{ user.userName }}
+								</div>
+							</li>
+							<li class="list-group-item">
+								<i class="iconfont icon-gerenzhongxin" />
+								手机号码
+								<div class="pull-right">
+									{{ user.phonenumber }}
+								</div>
+							</li>
+							<li class="list-group-item">
+								<i class="iconfont icon-shouye" />
+								用户邮箱
+								<div class="pull-right">
+									{{ user.email }}
+								</div>
+							</li>
+							<li class="list-group-item">
+								<i class="iconfont icon-bumenguanli" />
+								所属部门
+								<div v-if="user.dept" class="pull-right">{{ user.dept.deptName }} / {{ postGroup }}</div>
+							</li>
+							<li class="list-group-item">
+								<i class="iconfont icon-jiaoseguanli" />
+								所属角色
+								<div class="pull-right">
+									{{ roleGroup }}
+								</div>
+							</li>
+							<li class="list-group-item">
+								<i class="iconfont icon-gerenzhongxin" />
+								创建日期
+								<div class="pull-right">
+									{{ user.createTime }}
+								</div>
+							</li>
+						</ul>
+					</div>
+				</el-card>
+			</el-col>
+			<el-col :span="18" :xs="24">
+				<el-card>
+					<template #header>
+						<span>基本资料</span>
+					</template>
+					<el-tabs v-model="activeTab">
+						<el-tab-pane label="基本资料" name="userinfo">
+							<userInfo :user="user" />
+						</el-tab-pane>
+						<el-tab-pane label="修改密码" name="resetPwd">
+							<resetPwd :user="user" />
+						</el-tab-pane>
+					</el-tabs>
+				</el-card>
+			</el-col>
+		</el-row>
+	</div>
+</template>
+
+<script>
+import userAvatar from "./userAvatar";
+import userInfo from "./userInfo";
+import resetPwd from "./resetPwd";
+import { getUserProfile } from "@/api/modules/user";
+
+export default {
+	name: "Profile",
+	components: { userAvatar, userInfo, resetPwd },
+	data() {
+		return {
+			user: {},
+			roleGroup: {},
+			postGroup: {},
+			activeTab: "userinfo"
+		};
+	},
+	created() {
+		// url中获取参数
+		const { active } = this.$route.query;
+		if (active) {
+			this.activeTab = active;
+		}
+		this.getUser();
+	},
+	methods: {
+		getUser() {
+			getUserProfile().then(response => {
+				this.user = response.data.user;
+				this.roleGroup = response.data.roleGroup;
+				this.postGroup = response.data.postGroup;
+			});
+		},
+		handleUploadSuccess(url) {
+			this.user.avatar = url;
+		}
+	}
+};
+</script>
+<style>
+.list-group-item {
+	font-size: 14px;
+	margin-top: 10px;
+}
+</style>

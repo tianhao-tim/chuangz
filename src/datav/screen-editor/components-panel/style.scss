@@ -1,0 +1,212 @@
+$panel_width: 324px;
+
+.component-panel-wp {
+	flex: none;
+	z-index: 4;
+	width: $panel_width !important;
+	height: 100%;
+	overflow: hidden;
+	background: var(--el-bg-color-page);
+	box-shadow: var(--el-box-shadow);
+	transition: width 0.3s ease;
+	color: var(--el-text-color-primary);
+
+	&.--hide {
+		width: 45px !important;
+	}
+
+	.favorite-empty {
+		padding: 10px;
+		margin: 30px 0 0 0;
+		font-size: 12px;
+		color: var(--el-text-color-secondary);
+		text-align: center;
+	}
+}
+
+.components-panel {
+	position: relative;
+	display: flex;
+	width: $panel_width;
+	height: 100%;
+	overflow: hidden;
+	transition: 0.3s ease;
+	user-select: none;
+	flex-direction: column;
+
+	.panel-title {
+		display: flex;
+		height: 30px;
+		padding: 10px;
+		color: var(--el-text-color-primary);
+		background: var(--el-bg-color-page);
+		user-select: none;
+		align-items: center;
+		justify-content: space-between;
+
+		.panel-text {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		.btn-icon {
+			width: 22px;
+			height: 20px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: 0.2s;
+
+			//&:hover {
+			//	color: var(--el-color-primary);
+			//}
+		}
+	}
+
+	.components-panel-wrapper {
+		flex: 1;
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.com-tab-icon {
+		color: var(--el-text-color-secondary);
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	.com-tab-title {
+		font-size: 12px;
+		width: 100%;
+		line-height: 16px;
+		color: var(--el-text-color-primary);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+		font-weight: normal;
+	}
+
+	.el-tabs__item {
+		height: auto;
+		line-height: normal;
+		padding: 14px 5px !important;
+
+		&.is-left {
+			text-align: center;
+		}
+
+		&.is-active {
+			.com-tab-icon,
+			.com-tab-title {
+				color: var(--el-color-parimary);
+			}
+		}
+	}
+
+	.el-tabs-l2 {
+		.el-tabs__header {
+			width: 60px;
+
+			.el-tabs__nav-wrap {
+				background: var(--el-bg-color-page);
+			}
+		}
+
+		.el-tabs__active-bar {
+			display: none;
+		}
+
+		.el-tabs__item {
+			text-align: left !important;
+			padding: 16px 7px !important;
+
+			&.is-active {
+				background: var(--el-bg-color-page);
+			}
+		}
+	}
+
+	.components-single-menu-wp {
+		background: var(--el-bg-color-page);
+		min-height: 100%;
+	}
+
+	.components-single-menu {
+		padding: 16px;
+		background: var(--el-bg-color-page);
+	}
+
+	.components-single-menu-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.components-multi-menu {
+		height: 100%;
+		background: var(--el-bg-color-page);
+	}
+
+	.components-item {
+		cursor: pointer;
+		display: inline-block;
+		color: var(--el-text-color-primary);
+		border-radius: var(--el-border-radius-base);
+		vertical-align: top;
+		user-select: none;
+		flex: none;
+		margin-bottom: 16px;
+		box-sizing: border-box;
+		overflow: hidden;
+		position: relative;
+		box-shadow: var(--el-box-shadow);
+
+		.components-item-text {
+			font-size: 12px;
+			padding: 0 5px;
+			text-align: left;
+			overflow: hidden;
+			background: var(--el-disabled-bg-color);
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			line-height: 22px;
+		}
+
+		.components-item-img {
+			overflow: hidden;
+			width: 100%;
+			background-clip: content-box;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-color: #181a1c;
+			position: relative;
+			text-align: center;
+			box-sizing: content-box;
+			transition: border-color 0.2s;
+			height: 45px;
+		}
+
+		&.single {
+			width: 47%;
+
+			.components-item-img {
+				height: 58px;
+			}
+		}
+
+		&.double {
+			width: 100%;
+
+			.components-item-img {
+				height: 72px;
+			}
+		}
+	}
+}

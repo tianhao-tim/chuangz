@@ -1,0 +1,144 @@
+@import "../../style/mixins/util";
+
+.el-input {
+	.el-input__wrapper {
+		padding: 0 8px;
+		color: var(--el-text-color-primary);
+		background: var(--el-bg-color-overlay);
+		//border: 1px solid var(--el-border-color);
+		caret-color: var(--el-text-color-primary);
+		//box-shadow: 0 0 0 1px $input-prepend-bgcolor inset !important;
+
+		//&:focus {
+		//	border-color: var(--el-color-parimary );
+		//}
+		//
+		//&:hover {
+		//	border-color: var(--el-color-parimary );
+		//}
+		//
+		//&::placeholder {
+		//	color: $font-color-placeholder;
+		//}
+	}
+}
+
+.el-input-group__prepend {
+	//color: $font-color;
+	//border-color: $input-border-color;
+	//background: $input-prepend-bgcolor;
+}
+
+.el-input-group__append {
+	//color: $font-color;
+	//border-color: $input-border-color;
+	//background: $input-prepend-bgcolor;
+}
+
+.g-input {
+	width: 100%;
+
+	.el-input {
+		.el-input__inner {
+			padding: 0 7px;
+			//color: #fff;
+			text-align: left;
+		}
+	}
+}
+
+.g-input__caption {
+	display: block;
+	width: 100%;
+	font-size: var(--el-font-size-base);
+	height: 16px;
+	line-height: 16px;
+	color: var(--el-text-color-secondary);
+	@include utils-ellipsis();
+}
+
+.new-input {
+	height: 24px;
+	display: inline-block;
+	background: var(--el-bg-color-page);
+	vertical-align: middle;
+	padding: 0 8px;
+	line-height: 16px;
+	color: var(--el-text-color-primary);
+	width: 100%;
+	caret-color: var(--el-text-color-primary);
+	box-sizing: border-box;
+	box-shadow: none;
+	margin: 0;
+	outline: 0;
+	border-radius: 0;
+	font-size: 12px;
+	border: var(--el-border);
+	transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+	&.is-disabled {
+		color: var(--el-disabled-text-color);
+		cursor: not-allowed;
+		border: var(--el-disabled-border-color);
+	}
+
+	&:focus,
+	&:hover {
+		border: var(--el-color-primary);
+	}
+
+	&[type="number"]::-webkit-outer-spin-button,
+	&[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none !important;
+		margin: 0;
+	}
+}
+
+.el-autocomplete__popper {
+	background: var(--el-bg-color-page);
+	border-color: var(--el-color-primary);
+	border-radius: 0;
+
+	&.el-popper[role="tooltip"] {
+		background: var(--el-disabled-bg-color) !important;
+		border: solid 1px var(--el-disabled-bg-color) !important;
+		box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%) !important;
+
+		@each $placement, $adjacency in ("top": "left", "bottom": "right", "left": "bottom", "right": "top") {
+			&[data-popper-placement^="#{$placement}"] {
+				.el-popper__arrow::before {
+					background: var(--el-bg-color-page);
+					border-color: var(--el-color-primary);
+					border-#{$placement}-color: transparent;
+					border-#{$adjacency}-color: transparent;
+				}
+			}
+		}
+	}
+}
+
+.el-autocomplete-suggestion {
+	.el-autocomplete-suggestion__wrap {
+		padding: 2px 0;
+	}
+
+	li {
+		padding: 0 15px;
+		font-size: 12px;
+		color: var(--el-text-color-primary);
+		height: 28px;
+		line-height: 28px;
+		background-color: var(--el-bg-color-page);
+		border-left: 2px solid transparent;
+
+		&:hover {
+			background-color: var(--el-bg-color-page) !important;
+			border-left-color: var(--el-color-primary) !important;
+		}
+
+		&.highlighted {
+			background-color: var(--el-bg-color-page) !important;
+			border-left-color: var(--el-color-primary) !important;
+		}
+	}
+}

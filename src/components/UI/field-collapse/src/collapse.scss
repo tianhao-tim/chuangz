@@ -1,0 +1,103 @@
+//.el-collapse {
+//	border: none !important;
+//
+//	.el-collapse-item__header.is-active {
+//		height: 40px;
+//		line-height: 40px;
+//		color: var(--el-text-color-primary);
+//		background-color: var(--el-bg-color-page) !important;
+//		border-bottom: 1px solid var(--el-border-color);
+//
+//		&.focusing:focus:not(:hover) {
+//			color: var(--el-text-color-primary);
+//		}
+//	}
+//
+//	.el-collapse-item__arrow {
+//		font-size: 12px;
+//		color: var(--el-text-color-primary);
+//	}
+//
+//	.el-collapse-item.is-disabled .el-collapse-item__header {
+//		cursor: not-allowed;
+//		opacity: 0.5;
+//	}
+//
+//	.el-collapse-item__wrap {
+//		background-color: var(--el-bg-color-page) !important;
+//		border-bottom: none;
+//	}
+//
+//	.el-collapse-item__content {
+//		color: var(--el-text-color-primary);
+//	}
+//
+//	&.collapse-arrow-left {
+//		.el-collapse-item__header {
+//			flex-direction: row-reverse;
+//			justify-content: flex-end;
+//		}
+//
+//		.el-collapse-item__arrow {
+//			margin: 0 8px 0 0;
+//		}
+//	}
+//
+//}
+//
+//.g-field-collapse {
+//	margin-bottom: 5px;
+//	border: none;
+//
+//	.el-collapse-item__header {
+//		height: 40px;
+//		padding-left: 8px;
+//		line-height: 40px;
+//		color: var(--el-text-color-primary);
+//		background: var(--el-bg-color-page) !important;
+//		border-bottom-color: var(--el-border-color);
+//		display: flex;
+//		flex-direction: row-reverse;
+//		.g-field-title{
+//			flex: 8;
+//		}
+//		.el-collapse-item__arrow {
+//			flex: 1;
+//		}
+//	}
+//
+//	.el-collapse-item__wrap {
+//		padding: 0;
+//		// padding-right: 8px;
+//		background-color: var(--el-bg-color-page);
+//		border-bottom-color: var(--el-border-color);
+//	}
+//
+//	.el-collapse-item__content {
+//		padding: 0;
+//		background-color: var(--el-bg-color-page);
+//	}
+//
+//
+//}
+//
+//.el-collapse-item__content {
+//	.g-field-collapse {
+//		margin-bottom: 1px;
+//		padding-left: 4px;
+//
+//		.g-field-title {
+//			color: var(--el-text-color-primary);
+//		}
+//
+//		.el-collapse-item__header {
+//			color: var(--el-text-color-primary);
+//			background-color: var(--el-bg-color-page) !important;
+//
+//			.g-field-title,
+//			.g-field-title-with-description {
+//				color: var(--el-text-color-primary);
+//			}
+//		}
+//	}
+//}

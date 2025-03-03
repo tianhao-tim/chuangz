@@ -1,0 +1,126 @@
+@import "../../style/mixins/function";
+@import "../../style/mixins/util";
+
+$field-container-width: 192px;
+.g-field {
+	display: flex;
+	align-items: center;
+	color: var(--el-text-color-regular);
+
+	&.el-col-0 {
+		display: flex;
+		max-width: unset;
+	}
+}
+
+.g-field-title {
+	font-size: var(--el-font-size-base);
+	height: var(--el-font-line-height-primary);
+	line-height: var(--el-font-line-height-primary);
+	font-weight: 500;
+	flex: 8;
+	@include utils-ellipsis();
+}
+
+.g-field-title-with-description {
+	@extend .g-field-title;
+
+	cursor: help;
+	text-decoration: underline dotted;
+}
+
+.g-field-help {
+	padding: 0 3px;
+	color: var(--el-text-color-placeholder);
+	font-size: var(--el-font-size-base);
+	line-height: var(--el-font-line-height-primary);
+	cursor: pointer;
+
+	&:hover {
+		color: var(--el-color-primary);
+	}
+}
+
+.g-field-show-placeholder {
+	display: block;
+	width: 30px;
+	margin-left: 2px;
+	margin-right: 4px;
+	height: var(--el-font-line-height-primary);
+	line-height: var(--el-font-line-height-primary);
+
+	.g-field-show {
+		color: var(--el-text-color-placeholder);
+		cursor: pointer;
+
+		&:hover {
+			color: var(--el-color-primary);
+		}
+	}
+}
+
+.g-field-container {
+	width: $field-container-width;
+
+	&.el-col-0 {
+		display: block;
+		max-width: unset;
+		flex: 0 0 $field-container-width;
+		padding-right: 4px;
+	}
+
+	&.--flat {
+		width: $field-container-width + 4px;
+
+		&.el-col-0 {
+			flex: 0 0 $field-container-width + 4px;
+			padding-right: 0;
+		}
+	}
+}
+
+.g-field-wp {
+	display: flex;
+	padding: 4px 4px 4px 8px;
+
+	&:first-child {
+		padding-top: 16px;
+	}
+
+	&:last-child {
+		padding-bottom: 16px;
+		margin-bottom: 0;
+	}
+
+	.g-field {
+		flex: 1;
+		padding-right: 5px;
+	}
+
+	&.--lv2 {
+		margin-bottom: 4px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.g-field {
+			color: var(--el-text-color-regular);
+		}
+	}
+
+	&.--disable {
+		cursor: not-allowed;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.g-field-caption {
+	font-size: 12px;
+	color: var(--el-text-color-regular);
+	height: 16px;
+	line-height: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

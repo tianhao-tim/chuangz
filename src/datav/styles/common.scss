@@ -1,0 +1,15 @@
+.datav-gui {
+	&.--inline {
+		display: inline-block;
+		width: 98px;
+		padding: 0 4px 4px;
+
+		&.--single {
+			width: 196px;
+		}
+	}
+}
+
+.datav-wraper {
+	box-sizing: border-box;
+}

@@ -1,0 +1,73 @@
+kind: pipeline
+type: docker
+name: tduck-report
+
+steps:
+  - name: restore-cache
+    pull: if-not-exists
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+  - name: build-front
+    pull: if-not-exists
+    image: node:16
+    settings:
+      mirror: https://docker.mirrors.ustc.edu.cn
+    commands:
+      - npm install -g pnpm
+      - pnpm install
+      - pnpm run build
+      - node -v
+      - ls
+  - name: rebuild-cache
+    pull: if-not-exists
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
+  - name: publish-dev
+    image: appleboy/drone-scp
+    settings:
+      host:
+        from_secret: server1_host
+      username:
+        from_secret: server1_username
+      password:
+        from_secret: server1_password
+      port: 22
+      strip_components: 1
+      target: /usr/share/nginx/html/tduckpro
+      source: ./dist/*
+    when:
+      branch:
+        - develop
+  - name: publish-demo
+    image: appleboy/drone-scp
+    settings:
+      host:
+        from_secret: server3_host
+      username:
+        from_secret: server1_username
+      password:
+        from_secret: server1_password
+      port: 22
+      strip_components: 1
+      target: /usr/share/nginx/html/tduckreport
+      source: ./dist/*
+    when:
+      branch:
+        - master
+        - preview
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache1

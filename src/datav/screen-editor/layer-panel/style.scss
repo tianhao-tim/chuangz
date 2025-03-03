@@ -1,0 +1,249 @@
+$panel_width: 200px;
+
+.layer-panel-wp {
+	position: relative;
+	z-index: 5;
+	display: flex;
+	width: $panel_width !important;
+	height: 100%;
+	overflow: hidden;
+	background: var(--el-bg-color-page);
+	border-right: var(--el-border);
+	transition: width 0.3s ease;
+	flex: none;
+	flex-direction: column;
+}
+
+.layer-manager {
+	z-index: 9;
+	display: flex;
+	width: $panel_width;
+	height: 100%;
+	overflow: hidden;
+	transition: 0.3s ease;
+	flex-direction: column;
+	flex: auto;
+}
+
+.layer-manager-top {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	color: var(--el-text-color-primary);
+	text-indent: 10px;
+	background: var(--el-bg-color-page);
+	user-select: none;
+
+	.layer-num {
+		line-height: 30px;
+		vertical-align: middle;
+	}
+}
+
+.layer-layout {
+	position: absolute;
+	top: 0;
+	right: 1px;
+	letter-spacing: 4px;
+
+	.btn-icon {
+		text-indent: 0;
+		cursor: pointer;
+		transition: color 0.2s;
+		width: 20px;
+		display: inline-block;
+
+		&:hover {
+			color: var(--el-color-primary-light-3);
+		}
+
+		&.selected {
+			color: var(--el-color-primary);
+		}
+	}
+}
+
+.layer-toolbar {
+	display: flex;
+	height: 32px;
+	padding: 0 18px;
+	background: var(--el-bg-color-page);
+	align-items: center;
+	justify-content: center;
+	flex: none;
+
+	.toolbar-icon {
+		width: 22px;
+		height: 22px;
+		font-size: 16px;
+		color: var(--el-text-color-primary);
+		border-radius: 4px;
+		transition: background 0.2s;
+
+		&.enable:hover {
+			color: #fff;
+			cursor: pointer;
+			background: var(--el-color-primary) !important;
+		}
+
+		&.enable.checked {
+			color: #fff;
+			background: var(--el-color-primary) !important;
+		}
+
+		&.standard:not(.enable):hover {
+			cursor: pointer;
+			opacity: 0.5 !important;
+		}
+	}
+}
+
+.layer-toolbar-top {
+	border-bottom: var(--el-border);
+
+	.toolbar-icon {
+		margin: 0 9px;
+		line-height: 20px;
+		text-align: center;
+		border: var(--el-border);
+	}
+}
+
+.layer-toolbar-bottom {
+	border-top: var(--el-border);
+
+	.toolbar-icon {
+		display: flex;
+		margin: 0 5px;
+		border: 1px solid transparent;
+		align-items: center;
+		justify-content: center;
+		color: var(--el-text-color-secondary);
+	}
+}
+
+.layer-panel-wp.--hide {
+	width: 0 !important;
+
+	.layer-manager {
+		transform: translateX(-100%);
+	}
+}
+
+.layer-manager-wrap {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	font-size: 12px;
+	line-height: 2;
+	color: var(--el-text-color-primary);
+	list-style: none;
+	background: var(--el-bg-color-page);
+	user-select: none;
+	flex: auto;
+	flex-direction: column;
+}
+
+.layer-manager-item {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 32px;
+	padding: 0 6px;
+	padding-left: 8px;
+	cursor: pointer;
+	background: var(--el-bg-color-page);
+	box-sizing: border-box;
+	transition: background 0.2s;
+	align-items: center;
+	flex: none;
+
+	&.thumbail-wrap {
+		height: 48px;
+	}
+
+	&.hided,
+	&.locked {
+		color: var(--el-text-color-secondary);
+		background: var(--el-bg-color-page);
+	}
+
+	&.hovered {
+		color: var(--el-text-color-primary);
+		background: rgba(143, 225, 255, 0.1);
+	}
+
+	&.selected {
+		color: #fff;
+		background: var(--el-color-primary);
+	}
+
+	.layer-item-thumbail {
+		width: 53px;
+		height: 34px;
+		flex: none;
+		display: block;
+		border: var(--el-border);
+		background: var(--el-bg-color-page);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	.layer-manager-thumbail {
+		flex: auto;
+		width: 0;
+		margin-left: 6px;
+	}
+
+	.layer-item-span {
+		flex: auto;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		.layer-item-text {
+			flex: 0 1 auto;
+			text-indent: 7px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	.layer-item-input {
+		width: 100%;
+		color: var(--el-text-color-primary);
+		padding: 0 4px;
+		height: 20px;
+		line-height: 20px;
+		background: 0 0;
+		border: none;
+		outline: 0;
+		font-size: 12px;
+		text-indent: 2px;
+
+		&:focus {
+			color: var(--el-text-color-primary);
+			background-color: var(--el-bg-color-page);
+		}
+	}
+
+	.layer-thumbail-item {
+		position: absolute;
+		top: 3px;
+		right: 4px;
+		line-height: 1;
+	}
+
+	.show-toggle-btn {
+		padding: 0 2px;
+	}
+}
+
+.last-flex-item {
+	flex: auto;
+	min-height: 40px;
+}

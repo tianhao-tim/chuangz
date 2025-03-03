@@ -1,0 +1,15 @@
+// tooltip-popover
+$tooltip-popover-color: #fff;
+$tooltip-popover-bgcolor: #1b3964;
+$tooltip-popover-shadow-color: #000;
+
+.tooltip-popover.el-popover.el-popper.is-light {
+	padding: 6px 10px;
+	background: $tooltip-popover-bgcolor;
+	box-shadow: 0 0 4px $tooltip-popover-shadow-color;
+	color: $tooltip-popover-color;
+	border: var(--el-border);
+	line-height: 1;
+	font-size: 12px;
+	border-radius: 0;
+}

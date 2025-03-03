@@ -1,0 +1,68 @@
+.el-popper.is-blue {
+	padding: 5px;
+	background: var(--el-color-primary);
+	border-radius: 0;
+	color: #fff;
+	max-width: 200px;
+	overflow-wrap: break-word;
+	line-height: 16px;
+
+	.el-popper__arrow {
+		width: 8px;
+		height: 8px;
+
+		&::before {
+			content: " ";
+			width: 8px;
+			height: 8px;
+			background: var(--el-color-parimary);
+		}
+	}
+
+	@each $placement, $adjacency in ("top": "bottom", "bottom": "top", "left": "right", "right": "left") {
+		&[data-popper-placement^="#{$placement}"] {
+			.el-popper__arrow {
+				#{$adjacency}: -4px;
+				border-#{$placement}-color: var(--el-color-parimary);
+				border-#{$adjacency}-width: 0;
+
+				&::after {
+					border-#{$placement}-color: var(--el-color-parimary);
+				}
+			}
+		}
+	}
+}
+
+.el-popper.is-blue.is-error {
+	background: var(--el-bg-color-page);
+	max-width: 300px;
+
+	.el-popper__arrow {
+		&::before {
+			content: " ";
+			width: 8px;
+			height: 8px;
+			background: var(--el-color-error);
+		}
+	}
+}
+
+.el-popper.is-blue.filter-dep-info {
+	position: relative;
+	padding: 6px;
+	border-radius: 2px;
+	background: var(--el-bg-color-page);
+	color: var(--el-text-color-primary);
+	box-shadow: 0 0 6px -3px #000;
+	max-width: 240px;
+
+	.el-popper__arrow {
+		&::before {
+			content: " ";
+			width: 8px;
+			height: 8px;
+			background: var(--el-bg-color-page);
+		}
+	}
+}
